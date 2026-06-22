@@ -1,0 +1,27 @@
+profile: balanced
+
+per_trade:
+  max_risk_pct: 2.5
+  max_notional_pct: 25.0
+  max_premium_pct: 5.0
+  min_reward_risk: 1.5
+
+daily:
+  max_loss_pct: 3.0
+  max_concurrent_positions: 3
+
+session_rules:
+  no_entry_before_ist: "09:20"
+  no_entry_after_ist: "15:10"
+  flatten_all_by_ist: "15:20"
+  expiry_day_size_multiplier: 0.5
+  rvol_floor_for_trade: 0.5
+
+score_gates:
+  microstructure_min_abs_score: 5.0
+  macro_alignment_required: false
+  macro_contradiction_penalty: 0.25
+
+stop_loss:
+  max_atr_multiple: 1.25
+  hard_max_atr_multiple: 1.5

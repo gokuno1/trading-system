@@ -1,0 +1,35 @@
+[project]
+name = "trading-system"
+version = "0.1.0"
+description = "Agentic algorithmic trading system: macro + micro + microstructure + literature, signal-only, paper-trade, NIFTY/BANKNIFTY options."
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "pyyaml>=6.0",
+    "httpx>=0.27",
+    "tenacity>=8.2",
+    "langgraph>=0.2.0",
+    "langchain-core>=0.2.0",
+    "rich>=13.7",
+    "typer>=0.12",
+    "python-dateutil>=2.9",
+    "pytz>=2024.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[project.scripts]
+trading-system = "trading_system.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trading_system"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

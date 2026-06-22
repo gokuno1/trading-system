@@ -1,0 +1,16 @@
+option_strike_step:
+  NIFTY: 50
+  BANKNIFTY: 100
+
+preferred_strikes:
+  rule: "ATM ± 1 step for directional, ATM for premium-buyer"
+  max_distance_steps: 2
+
+iv_envelope:
+  min_iv: 8
+  max_iv: 60
+
+liquidity_filters:
+  min_oi_per_strike: 50000
+  min_volume_per_strike: 10000
+  max_bid_ask_spread_pct: 1.5

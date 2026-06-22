@@ -1,0 +1,42 @@
+environment: paper
+mode: signal_only
+timezone: Asia/Kolkata
+
+capital:
+  total_inr: 200000
+  notes: |
+    Default trading capital ₹3,00,000. Override via TRADING_CAPITAL_INR env var.
+    For NIFTY weekly options at small capital, the system frequently warns
+    that one lot risk exceeds the per-trade risk budget. That warning is
+    intentional — do not bypass.
+
+cadences:
+  macro_refresh_days: 7
+  micro_refresh_days: 7
+  literature_refresh_days: 30
+  intraday_loop_seconds: 300
+  pre_market_run_time_ist: "08:30"
+  eod_run_time_ist: "15:30"
+
+instruments:
+  - symbol: NIFTY
+    upstox_instrument_key: "NSE_INDEX|Nifty 50"
+    related_keys:
+      - "NSE_INDEX|Nifty Bank"
+      - "NSE_INDEX|Nifty IT"
+      - "NSE_INDEX|Nifty Fin Service"
+    lot_size: 65
+    expiry_cadence: weekly
+    expiry_weekday: Tuesday
+  - symbol: BANKNIFTY
+    upstox_instrument_key: "NSE_INDEX|Nifty Bank"
+    related_keys:
+      - "NSE_INDEX|Nifty 50"
+    lot_size: 30
+    expiry_cadence: monthly
+    expiry_weekday: Tuesday
+
+paths:
+  snapshots: ./data/snapshots
+  ledger_db: ./data/ledger/ledger.sqlite
+  reports: ./data/reports
